@@ -1,0 +1,78 @@
+<template>
+  <div class="box1">
+    <div id="mymap"></div>
+    <button title="顺时针旋转" @click="rotateRight">↻</button>
+    <button title="逆时针旋转" @click="rotateLeft">↺</button>
+  </div>
+</template>
+
+<script>
+import "ol/ol.css";
+import { Map, View } from "ol";
+import Tile from "ol/layer/Tile";
+import OSM from "ol/source/OSM";
+
+export default {
+  data() {
+    return {
+      map: null,
+      view: null
+    };
+  },
+  methods: {
+    //  初始化地图
+    initMap() {
+      this.view = new View({
+        extent: [102, 29, 104, 31],
+        // 设置成都为地图中心
+        center: [104.06, 30.67],
+        projection: "EPSG:4326",
+        zoom: 10
+      });
+
+      this.map = new Map({
+        target: "mymap",
+        layers: [
+          new Tile({
+            source: new OSM()
+          })
+        ],
+
+        view: this.view
+      });
+    },
+
+    // 逆时针旋转函数
+    rotateRight() {
+      const view = this.view;
+      view.animate({
+        rotation: view.getRotation() + Math.PI / 2
+      },{zoom: view.getZoom() + 1});
+      // view.animate({zoom: view.getZoom() + 1});
+    },
+
+    // 顺时针旋转的函数
+    rotateLeft() {
+      const view = this.view;
+      view.animate({
+        rotation: view.getRotation() - Math.PI / 2
+      });
+    }
+
+  },
+
+  mounted() {
+    this.initMap();
+  }
+};
+</script>
+
+<style scoped>
+.box1 {
+  flex-grow: 1;
+}
+#mymap {
+  width: 100%;
+  height: 500px;
+}
+</style>
