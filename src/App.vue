@@ -34,6 +34,7 @@ import demo13 from "./components/demo13-defineEvent"
 import demo14 from "./components/demo14-doTest"
 import demo15 from "./components/demo15-clickFeatureShowInfo"
 import demo16 from "./components/demo16-drawDemo"
+import demo17 from "./components/demo17-flyLine"
 
 export default {
   name: 'app',
@@ -44,7 +45,7 @@ export default {
   },
   components: {
     asideNav,
-    demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8, demo9, demo10, demo11, demo12, demo13, demo14, demo15, demo16
+    demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8, demo9, demo10, demo11, demo12, demo13, demo14, demo15, demo16, demo17
   },
   methods:{
     doChange( name ){

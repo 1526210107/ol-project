@@ -77,6 +77,9 @@ export default {
         },{
           name: "16. 绘制点线面demo",
           component: "demo16"
+        },{
+          name: "17. 实现飞行的线条",
+          component: "demo17"
         }
       ]
     };
